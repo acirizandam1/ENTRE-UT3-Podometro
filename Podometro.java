@@ -59,8 +59,16 @@ public class Podometro {
      *  
      */
     public void configurar(double queAltura, char queSexo) {
-
+     altura = queAltura;
+     sexo = queSexo;
+     if (sexo == 'H') {
+         longitudZancada = Math.ceil(altura * 0.45);
+     }
+     else {
+         longitudZancada = Math.floor(altura * 0.41);
+     }
     }
+    
     /**
      *  Recibe cuatro parámetros que supondremos correctos:
      *    pasos - el nº de pasos caminados
