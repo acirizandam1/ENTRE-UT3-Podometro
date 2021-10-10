@@ -3,27 +3,50 @@
  * acerca de los pasos, distancia, ..... que una persona
  * ha dado en una semana. 
  * 
- * @author    - pon aquí tu nombre - 
+ * @author   Aritz Ciriza
  */
 public class Podometro {
-    
+    private char HOMBRE = 'H';
+    private char MUJER = 'M';
+    private double ZANCADA_HOMBRE = 0.45;
+    private double ZANCADA_MUJER = 0.41;
+    private int SABADO = 6;
+    private int DOMINGO = 7;
+    private String marca;
+    private double altura;
+    private char sexo;
+    private double longitudZancada;
+    private int totalPasosLaborables; //hago aqui una aclaración, entiendo esta variable como entera para no representar que dio "2 pasos y medio" por ejemplo.
+    private int totalPasosSabado;
+    private int totalPasosDomingo;
+    private double totalDistanciaSemana;
+    private double totalDistanciaFinSemana;
+    private double minutos;
+    private int caminatasNoche;
 
     /**
      * Inicializa el podómetro con la marca indicada por el parámetro.
      * El resto de atributos se ponen a 0 y el sexo, por defecto, es mujer
      */
-    public Podometro() {
-
-        
+    public Podometro(string queMarca) {
+        marca = queMarca;
+        sexo = 'M';
+        altura = 0;
+        longitudZancada = 0;
+        totalPasosLaborables = 0;
+        totalPasosSabado = 0;
+        totalPasosDomingo = 0;
+        totalDistanciaSemana = 0;
+        totalDistanciaFinSemana = 0;
+        minutos = 0;
+        caminatasNoche = 0;
     }
-
     /**
      * accesor para la marca
      *  
      */
     public      getMarca() {
 
-         
 
     }
 
@@ -38,10 +61,8 @@ public class Podometro {
      */
     public void configurar(double queAltura, char queSexo) {
 
-        
     }
-
-     /**
+    /**
      *  Recibe cuatro parámetros que supondremos correctos:
      *    pasos - el nº de pasos caminados
      *    dia - nº de día de la semana en que se ha hecho la caminata 
@@ -55,13 +76,12 @@ public class Podometro {
      *   (leer enunciado del ejercicio)
      */
     public void registrarCaminata(int pasos, int dia, int horaInicio,
-                            int horaFin) {
+    int horaFin) {
 
-       
 
     }
-    
-     /**
+
+    /**
      * Muestra en pantalla la configuración del podómetro
      * (altura, sexo y longitud de la zancada)
      * 
@@ -70,7 +90,6 @@ public class Podometro {
      */
     public void printConfiguracion() {
 
-        
 
     }
 
@@ -83,11 +102,9 @@ public class Podometro {
      */
     public void printEstadísticas() {
 
-        
 
     }
 
-   
 
     /**
      *  Calcula y devuelve un String que representa el nombre del día
@@ -95,11 +112,9 @@ public class Podometro {
      */
     public String diaMayorNumeroPasos() {
 
-         
 
     }
-    
-    
+
     /**
      * Restablecer los valores iniciales del podómetro
      * Todos los atributos se ponen a cero salvo el sexo
@@ -108,7 +123,6 @@ public class Podometro {
      */    
     public void reset() {
 
-        
 
     }
 
