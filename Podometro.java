@@ -28,7 +28,7 @@ public class Podometro {
      * Inicializa el podómetro con la marca indicada por el parámetro.
      * El resto de atributos se ponen a 0 y el sexo, por defecto, es mujer
      */
-    public Podometro(string queMarca) {
+    public Podometro(String queMarca) {
         marca = queMarca;
         sexo = 'M';
         altura = 0;
@@ -45,9 +45,8 @@ public class Podometro {
      * accesor para la marca
      *  
      */
-    public      getMarca() {
-
-
+    public String getMarca() {
+        return marca;
     }
 
     /**
