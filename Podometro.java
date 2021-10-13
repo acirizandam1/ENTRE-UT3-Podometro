@@ -114,7 +114,7 @@ public class Podometro {
     public void printConfiguracion() {
         System.out.println("Configuración del podómetro");
         System.out.println("***************************");
-        System.out.println("Altura: " + altura + " mtos");
+        System.out.println("Altura: " + altura / 100 + " mtos");
         System.out.println("Sexo: " + sexo);
         System.out.println("Longitud zancada: " + longitudZancada + " mtos");
     }
@@ -138,7 +138,7 @@ public class Podometro {
         System.out.println("Nºcaminatas realizadas a partir de las 21h: " + caminatasNoche);
         System.out.println("");
         System.out.println("Tiempo total caminando en la semana " + tiempo);
-        System.out.println("Día/s con más pasos caminados");
+        System.out.println("Día/s con más pasos caminados" +);
     }
 
     /**
@@ -146,7 +146,24 @@ public class Podometro {
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
      */
     public String diaMayorNumeroPasos() {
-
+    if (totalPasosLaborables > totalPasosSabado && totalPasosLaborables > totalPasosDomingo) {
+        return "Laborables";
+    }
+    else if(totalPasosSabado > totalPasosDomingo && totalPasosSabado >totalPasosLaborables) {
+        return "Sabado";
+    }
+    else if (totalPasosDomingo > totalPasosSabado && totalPasosDomingo >totalPasosLaborables) {
+        return "Domingo";
+    }
+    if ( totalPasosLaborables == totalPasosSabado) {
+        return "Laborables y Sabados";
+    }
+    else if (totalPasosSabado == totalPasosDomingo) {
+        return "Sabados y Domingos";
+    }
+    else if (totalPasosLaborables == totalPasosDomingo) {
+        return "Domingos y Laborables";
+    }
     }
 
     /**
