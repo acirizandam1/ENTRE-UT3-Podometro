@@ -21,7 +21,7 @@ public class Podometro {
     private int totalPasosDomingo;
     private double totalDistanciaSemana;
     private double totalDistanciaFinSemana;
-    private double minutos;
+    private double tiempo;
     private int caminatasNoche;
 
     /**
@@ -38,7 +38,7 @@ public class Podometro {
         totalPasosDomingo = 0;
         totalDistanciaSemana = 0;
         totalDistanciaFinSemana = 0;
-        minutos = 0;
+        tiempo = 0;
         caminatasNoche = 0;
     }
 
@@ -85,13 +85,25 @@ public class Podometro {
      */
     public void registrarCaminata(int pasos, int dia, int horaInicio,
     int horaFin) {
+        int duracionCaminata = (horaFin - horaInicio);
         switch (dia){
             case 1 : totalPasosLaborables += pasos;
                 break;
-        }
-        
+            case 2 : totalPasosLaborables += pasos;
+                break;
+            case 3 : totalPasosLaborables += pasos;
+                break;
+            case 4 : totalPasosLaborables += pasos;
+                break;
+            case 5 : totalPasosLaborables += pasos;
+                break;
+            case 6 : totalPasosSabado += pasos;
 
+            default: case 7 : totalPasosDomingo += pasos;
+        }
+        duracionCaminata += tiempo;
     }
+
     /**
      * Muestra en pantalla la configuración del podómetro
      * (altura, sexo y longitud de la zancada)
@@ -100,8 +112,13 @@ public class Podometro {
      *  
      */
     public void printConfiguracion() {
-
+        System.out.println("Configuración del podómetro");
+        System.out.println("***************************");
+        System.out.println("Altura: " + altura + " mtos");
+        System.out.println("Sexo: " + sexo);
+        System.out.println("Longitud zancada: " + longitudZancada + " mtos");
     }
+
     /**
      * Muestra en pantalla información acerca de la distancia recorrida,
      * pasos, tiempo total caminado, ....
@@ -120,6 +137,7 @@ public class Podometro {
     public String diaMayorNumeroPasos() {
 
     }
+
     /**
      * Restablecer los valores iniciales del podómetro
      * Todos los atributos se ponen a cero salvo el sexo
