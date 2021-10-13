@@ -85,7 +85,7 @@ public class Podometro {
      */
     public void registrarCaminata(int pasos, int dia, int horaInicio,
     int horaFin) {
-        int duracionCaminata = (horaFin - horaInicio);
+        int duracionCaminata = (horaFin * 60) - (horaInicio * 60);
         switch (dia){
             case 1 : totalPasosLaborables += pasos;
                 break;
@@ -127,7 +127,18 @@ public class Podometro {
      *  
      */
     public void printEstadísticas() {
-
+        System.out.println("Estadísticas");
+        System.out.println("*****************");
+        System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana + " km");
+        System.out.println("Distancia recorrida fin de semana: "+ totalDistanciaFinSemana + " km");
+        System.out.println("Nºpasos dias laborables: " + totalPasosLaborables);
+        System.out.println("Nºpasos SABADO: " + totalPasosSabado);
+        System.out.println("Nºpasos DOMINGO: " + totalPasosDomingo);
+        System.out.println("");
+        System.out.println("Nºcaminatas realizadas a partir de las 21h: " + caminatasNoche);
+        System.out.println("");
+        System.out.println("Tiempo total caminando en la semana " + tiempo);
+        System.out.println("Día/s con más pasos caminados");
     }
 
     /**
