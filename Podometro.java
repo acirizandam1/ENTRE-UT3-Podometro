@@ -63,10 +63,10 @@ public class Podometro {
         altura = queAltura;
         sexo = queSexo;
         if (sexo == 'H') {
-            longitudZancada = Math.ceil(altura * 0.45);
+            longitudZancada = Math.ceil(altura/100 * 0.45);
         }
         else {
-            longitudZancada = Math.floor(altura * 0.41);
+            longitudZancada = Math.floor(altura/100 * 0.41);
         }
     }
 
@@ -98,10 +98,13 @@ public class Podometro {
             case 5 : totalPasosLaborables += pasos;
                 break;
             case 6 : totalPasosSabado += pasos;
+                break;
 
             default: case 7 : totalPasosDomingo += pasos;
         }
         duracionCaminata += tiempo;
+        totalDistanciaSemana += totalPasosLaborables * longitudZancada;
+        totalDistanciaFinSemana += (totalPasosSabado + totalPasosDomingo) * longitudZancada;
     }
 
     /**
@@ -129,8 +132,8 @@ public class Podometro {
     public void printEstadísticas() {
         System.out.println("Estadísticas");
         System.out.println("*****************");
-        System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana + " km");
-        System.out.println("Distancia recorrida fin de semana: "+ totalDistanciaFinSemana + " km");
+        System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana/1000 + " km");
+        System.out.println("Distancia recorrida fin de semana: "+ totalDistanciaFinSemana/1000 + " km");
         System.out.println("Nºpasos dias laborables: " + totalPasosLaborables);
         System.out.println("Nºpasos SABADO: " + totalPasosSabado);
         System.out.println("Nºpasos DOMINGO: " + totalPasosDomingo);
@@ -138,7 +141,7 @@ public class Podometro {
         System.out.println("Nºcaminatas realizadas a partir de las 21h: " + caminatasNoche);
         System.out.println("");
         System.out.println("Tiempo total caminando en la semana " + tiempo);
-        System.out.println("Día/s con más pasos caminados" +);
+        System.out.println("Día/s con más pasos caminados");
     }
 
     /**
@@ -146,25 +149,28 @@ public class Podometro {
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
      */
     public String diaMayorNumeroPasos() {
-    if (totalPasosLaborables > totalPasosSabado && totalPasosLaborables > totalPasosDomingo) {
-        return "Laborables";
-    }
-    else if(totalPasosSabado > totalPasosDomingo && totalPasosSabado >totalPasosLaborables) {
-        return "Sabado";
-    }
-    else if (totalPasosDomingo > totalPasosSabado && totalPasosDomingo >totalPasosLaborables) {
-        return "Domingo";
-    }
-    if ( totalPasosLaborables == totalPasosSabado) {
-        return "Laborables y Sabados";
-    }
-    else if (totalPasosSabado == totalPasosDomingo) {
-        return "Sabados y Domingos";
-    }
-    else if (totalPasosLaborables == totalPasosDomingo) {
-        return "Domingos y Laborables";
-    }
-    }
+        String diaMayor = "";
+        if (totalPasosLaborables > totalPasosSabado && totalPasosLaborables > totalPasosDomingo) {
+            diaMayor = "Laborables";
+        }
+        else if(totalPasosSabado > totalPasosDomingo && totalPasosSabado >totalPasosLaborables) {
+            diaMayor = "Sabado";
+        }
+        else if (totalPasosDomingo > totalPasosSabado && totalPasosDomingo >totalPasosLaborables) {
+            diaMayor = "Domingo";
+        }
+
+        if ( totalPasosLaborables == totalPasosSabado) {
+            diaMayor = "Laborables y Sabados";
+        }
+        else if (totalPasosSabado == totalPasosDomingo) {
+            diaMayor = "Sabados y Domingos";
+        }
+        else if (totalPasosLaborables == totalPasosDomingo) {
+            diaMayor = "Domingos y Laborables";
+        }
+        return diaMayor;
+    } 
 
     /**
      * Restablecer los valores iniciales del podómetro
@@ -173,6 +179,14 @@ public class Podometro {
      *  
      */    
     public void reset() {
-
+        altura = 0;
+        longitudZancada = 0;
+        totalPasosLaborables = 0;
+        totalPasosSabado = 0;
+        totalPasosDomingo = 0;
+        totalDistanciaSemana = 0;
+        totalDistanciaFinSemana = 0;
+        tiempo = 0;
+        caminatasNoche = 0;
     }
 }
