@@ -143,7 +143,6 @@ public class Podometro {
         System.out.println("Nºcaminatas realizadas a partir de las 21h: " + caminatasNoche);
         System.out.println("");
         System.out.println("Tiempo total caminando en la semana: " + horas + "H" + " y" + minutos + "m" );
-        System.out.println("Día/s con más pasos caminados" );
     }
 
     /**
